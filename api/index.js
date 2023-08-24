@@ -1,4 +1,4 @@
-import  Express from "express";
+import  express from "express";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.js"
 import usersRoute from "./routes/users.js"
@@ -6,7 +6,7 @@ import hotelsRoute from "./routes/hotels.js"
 import roomsRoute from "./routes/rooms.js"
 
 
-const app = Express()
+const app = express()
 import dotenv from "dotenv"
 dotenv.config()
 
@@ -28,6 +28,8 @@ mongoose.connection.on("connected", ()=>{
 })
 
 // middle were
+app.use(express.json())
+
 app.use("/api/auth",authRoute)
 app.use("/api/users",usersRoute)
 app.use("/api/hotels",hotelsRoute)
