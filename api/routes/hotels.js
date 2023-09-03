@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(error);
     }
 });
-
+ 
 router.get('/', async (req, res) => {
     try {
         const hotels = await Hotel.find({});
