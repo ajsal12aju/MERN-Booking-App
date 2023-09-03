@@ -23,9 +23,9 @@ const connect = async () => {
 mongoose.connection.on("disconnected", ()=>{
     console.log("disconnected");
 })
-mongoose.connection.on("connected", ()=>{
-    console.log("connected mongodb");
-})
+// mongoose.connection.on("connected", ()=>{
+//     console.log("connected mongodb");
+// })
 
 // middle were
 app.use(express.json())
@@ -49,5 +49,5 @@ app.use((err , req , res , next)=>{
 
 app.listen(8800,()=>{
     connect()
-    console.log("conneced to thee backend");
+    console.log("conneced to the backend");
 })                                                                      
