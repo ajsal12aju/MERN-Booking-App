@@ -26,7 +26,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         await Hotel.findByIdAndDelete(req.params.id);
-        res.status(200).json("HOTEL IS EDITED ");
+        res.status(200).json("HOTEL IS Deleeted ");
     } catch (error) {
         res.status(500).json(error);
     }
