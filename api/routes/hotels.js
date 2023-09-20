@@ -27,7 +27,7 @@ router.delete('/:id', async (req, res) => {
     try {
         await Hotel.findByIdAndDelete(req.params.id);
         res.status(200).json("HOTEL IS  ever");
-        console.log(res,"edited response is editeble")
+        console.log(res,"edited responsibe setter")
     } catch (error) {
         res.status(500).json(error);
     }
