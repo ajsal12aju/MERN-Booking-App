@@ -27,7 +27,7 @@ router.delete('/:id', async (req, res) => {
     try {
         await Hotel.findByIdAndDelete(req.params.id);
         res.status(200).json("HOTEL IS  ever");
-        console.log(res,"edited responsibe setter")
+        console.log(res,"edited ")
     } catch (error) {
         res.status(500).json(error);
     }
@@ -37,6 +37,7 @@ router.get('/:id', async (req, res) => {
     try {
         const hotel = await Hotel.findById(req.params.id);
         res.status(200).json(hotel);
+        console.log(hotel, "hotal is getted")
     } catch (error) {
         res.status(500).json(error);
     }
