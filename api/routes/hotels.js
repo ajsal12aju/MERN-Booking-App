@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
     try {
         const hotels = await Hotel.find({});
         res.status(200).json(hotels);
-        console.log(hotels,"go to hotals")
+        console.log(hotels,"go updated serred to hotals")
     } catch (error) {
         res.status(500).json(error);
     }
