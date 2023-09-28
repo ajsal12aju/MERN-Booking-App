@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
     try {
         const hotel = await Hotel.findById(req.params.id);
         res.status(200).json(hotel);
-        console.log(hotel, "done with api setting is getted")
+        console.log(hotel, "done with api setting api is getted")
     } catch (error) {
         res.status(500).json(error);
     }
@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
     try {
         const hotels = await Hotel.find({});
         res.status(200).json(hotels);
-        console.log(hotels,"go to all details about the hotals")
+        console.log(hotels,"go to all all things dited about the hotals")
     } catch (error) {
         res.status(500).json(error);
     }
