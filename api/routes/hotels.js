@@ -26,7 +26,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         await Hotel.findByIdAndDelete(req.params.id);
-        res.status(200).json("HOTEL IS edited work  ever");
+        res.status(200).json("HOTEL IS edited work can updated  ever");
         console.log(res,"edited ")
     } catch (error) {
         res.status(500).json(error);
@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
     try {
         const hotel = await Hotel.findById(req.params.id);
         res.status(200).json(hotel);
-        console.log(hotel, "done with api setting api is getted")
+        console.log(hotel, "done with api setting api is updated getted")
     } catch (error) {
         res.status(500).json(error);
     }
