@@ -38,7 +38,7 @@ app.use("/api/rooms",roomsRoute)
 
 app.use((err , req , res , next)=>{
    const errorStatus = err.status || 500
-   const errorMessage =  err.message || "somthing went added  daf wrong !"
+   const errorMessage =  err.message || "somthing went added  daf wrong added !"
    return res.status(errorStatus).json({
     success:false,
     status:errorStatus,
