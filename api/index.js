@@ -49,5 +49,5 @@ app.use((err , req , res , next)=>{
 
 app.listen(8800,()=>{
     connect()
-    console.log("conneced to the DB con backend");
+    console.log("conneced to backend currectly");
 })                                                                      
