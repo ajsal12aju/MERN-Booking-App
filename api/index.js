@@ -21,7 +21,7 @@ const connect = async () => {
 }
 
 mongoose.connection.on("disconnected", ()=>{
-    console.log("disconnected connection from the mongodb");
+    console.log("disconnected  mongodb");
 })
 // mongoose.connection.on("connected", ()=>{
 //     console.log("connected mongodb");
@@ -49,5 +49,5 @@ app.use((err , req , res , next)=>{
 
 app.listen(8800,()=>{
     connect()
-    console.log("conneced to backended currectly");
+    console.log("conneced to backended succsess");
 })                                                                      
