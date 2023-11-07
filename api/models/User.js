@@ -18,5 +18,4 @@ const UserSchema = new mongoose.Schema({
         default: false,
     },
 }, { timestamps: true });
-UserSchema.index({ name: 1 }, { unique: false });
 export default mongoose.model("User",UserSchema)
