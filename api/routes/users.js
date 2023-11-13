@@ -11,10 +11,10 @@ const router = express.Router()
 //     res.send("You are authenticated and logged in you can delete account also");
 // });
 
-// router.get("/checkadmin/:id", verifyAdmin, (req, res, next) => {
-//     res.send("hello admin You are authenticated and logged in you can delete account also");
-// });
-
+router.get("/checkadmin/:id", verifyAdmin, (req, res, next) => {
+    res.send("hello  hkj admin You are authenticated and logged in you can delete account also");
+});
+  
 router.put("/:id", verifyUser, updateUser)
 router.delete("/:id", verifyUser, deleteUser);
 router.get("/:id", verifyUser, getUser);
