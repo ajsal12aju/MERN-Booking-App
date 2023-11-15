@@ -1,21 +1,22 @@
 import mongoose from 'mongoose'
 
 const RoomSchema = new mongoose.Schema({
-    username: {
+    title: {
         type: String,
         required: true,
     },
-    email: {
+    price: {
         type: String,
         required: true,
     },
-    password: {
+    maxPeople: {
         type: String,
         required: true,
     },
-    isAdmin: { 
-        type: Boolean,
+    desc: { 
+        type: String,
         default: false,
     },
+    roomNumbers:[{number : Number, unavailableDates : {type: [Date]}}],
 }, { timestamps: true });
 export default mongoose.model("Room",RoomSchema)
