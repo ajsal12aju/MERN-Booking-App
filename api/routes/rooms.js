@@ -1,12 +1,13 @@
 import express from "express";
 import { verifyAdmin } from "../utils/verifyToken.js";
+import { createRoom, deleteRoom, getRoom, getRooms, updateRoom } from "../contriollers/room.js";
 
 const router = express.Router();
 
-router.post('/',verifyAdmin, createHotel);
-router.put('/:id',verifyAdmin, updateHotel);
-router.delete('/:id',verifyAdmin, deleteHotel);
-router.get('/:id', getHotel);
-router.get('/', getHotels);
+router.post('/:hotelid',verifyAdmin, createRoom);
+router.put('/:id',verifyAdmin, updateRoom);
+router.delete('/:id',verifyAdmin, deleteRoom);
+router.get('/:id', getRoom);
+router.get('/', getRooms);
 
 export default router;
