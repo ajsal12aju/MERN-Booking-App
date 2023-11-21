@@ -46,7 +46,7 @@ export const deleteRoom = async (req, res, next) => {
     } catch (err) {
       next(err);
     }
-    res.status(200).json("Room  deleted hh succsussfully");
+    res.status(200).json("Room  deleted update succsussfully");
   } catch (error) {
     next(error);
   }
