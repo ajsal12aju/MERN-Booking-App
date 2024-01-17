@@ -5,9 +5,12 @@ import usersRoute from "./routes/users.js"
 import hotelsRoute from "./routes/hotels.js"
 import roomsRoute from "./routes/rooms.js"
 import cookieParser from "cookie-parser";
+import cors from "cors"
 
 
 const app = express()
+app.use(express.json())
+app.use(cors())
 app.use(cookieParser())
 import dotenv from "dotenv"
 dotenv.config()
@@ -28,9 +31,8 @@ mongoose.connection.on("disconnected", ()=>{
 // mongoose.connection.on("connected", ()=>{
 //     console.log("connected mongodb");
 // })
-
 // middle were
-app.use(express.json())
+
 
 app.use("/api/auth",authRoute)
 app.use("/api/users",usersRoute)
