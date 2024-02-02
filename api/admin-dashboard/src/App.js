@@ -3,7 +3,6 @@ import Login from "./pages/login/Login"
 import List from "./pages/list/List"
 import Single from "./pages/single/Single"
 import New from "./pages/new/New"
-
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { productInputs, userInput } from "./formsorce";
 import "./style/dark.scss"
@@ -17,7 +16,7 @@ function App() {
 
   const ProtectedRoute = ({children}) =>{
     const {user} = useContext(AuthContext)
-
+console.log(user, 'done')
     if(!user){
       return <Navigate to="/login"></Navigate>
     }
@@ -33,7 +32,6 @@ function App() {
             <Route
              index
             element={<ProtectedRoute> <Home/> </ProtectedRoute>}></Route>
-           
           </Route>
           <Route path="users">
             <Route index element={<List/>}/>
