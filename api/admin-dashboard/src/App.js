@@ -34,14 +34,14 @@ console.log(user, 'user is came yes here')
             element={<ProtectedRoute> <Home/> </ProtectedRoute>}></Route>
           </Route>
           <Route path="users">
-            <Route index element={<List/>}/>
-            <Route path=":userId" element={<Single/>}></Route>
-            <Route path="new" element={<New inputs={userInput} title="Add New User" />}></Route>
+            <Route index element={ <ProtectedRoute> <List/></ProtectedRoute>}/>
+            <Route path=":userId" element={ <ProtectedRoute>   <Single/></ProtectedRoute>}></Route>
+            <Route path="new" element={<ProtectedRoute> <New inputs={userInput} title="Add New User" /> </ProtectedRoute>}></Route>
           </Route>
           <Route path="products">
-            <Route index element={<List/>}/>
-            <Route path=":productId" element={<Single/>}></Route>
-            <Route path="new" element={<New inputs={productInputs} title="Add New Products"/>}></Route>
+            <Route index element={  <ProtectedRoute>  <List/> </ProtectedRoute>}/>
+            <Route path=":productId" element={  <ProtectedRoute> <Single/> </ProtectedRoute>}></Route>
+            <Route path="new" element={  <ProtectedRoute> <New inputs={productInputs} title="Add New Products"/> </ProtectedRoute>}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
