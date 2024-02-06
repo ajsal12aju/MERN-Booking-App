@@ -37,10 +37,12 @@ function Sidebar() {
             <Link to="/users" style={{textDecoration:"none"}}>
             <li> <GroupIcon  className='icon'/><span>Users</span></li>
             </Link>
-            <Link to="/products" style={{textDecoration:"none"}}>
-            <li> <ProductionQuantityLimitsIcon  className='icon'/><span>Products</span></li>
+            <Link to="/hotels" style={{textDecoration:"none"}}>
+            <li> <ProductionQuantityLimitsIcon  className='icon'/><span>Hotels</span></li>
             </Link>
-            <li> <BookmarkBorderIcon  className='icon'/><span>Orders</span></li>
+            <Link to="/rooms" style={{textDecoration:"none"}}>
+            <li> <BookmarkBorderIcon  className='icon'/><span>Rooms</span></li>
+            </Link>
             <li> <LocalShippingIcon  className='icon'/><span>Delivery</span></li>
             <p className="title">USEFUL LINKS</p>
             <li> <MilitaryTechIcon  className='icon'/><span>Status</span></li>
