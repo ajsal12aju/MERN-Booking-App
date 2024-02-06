@@ -7,7 +7,7 @@ export const userColumns = [
     headerName: "User",
     width: 230,
     renderCell: (params) => {
-        console.log()
+        console.log(params.row.email, 'params')
       return (
         <div className="cellWithImg">
           <img className="cellImg" src={params.row.img} alt="" />
@@ -21,19 +21,6 @@ export const userColumns = [
   { field: "city", headerName: "City", width: 100 },
   { field: "phone", headerName: "Phone", width: 100 },
 
-
-//   {
-//     field: "status",
-//     headerName: "Status",
-//     width: 160,
-//     renderCell: (params) => {
-//       return (
-//         <div className={`cellWithStatus ${params.row.status}`}>
-//           {params.row.status}
-//         </div>
-//       );
-//     },   
-//   },
 ];
 
 export const userRows = [
