@@ -12,7 +12,7 @@ function DataTable({columns}) {
   const path = location.pathname.split("/")[1];
   console.log(path, 'path');
   const [list, setList] = useState([])
-  const { data, loading, error, refetch } = useFetch(`/${path}`); // use refetch from the custom hook
+  const { data, loading, error, refetch } = useFetch(`/${path}`); 
 
   useEffect(()=>{
     setList(data)
@@ -20,7 +20,6 @@ function DataTable({columns}) {
 
  console.log(data, 'datasss');
  const handleDelete = async(id) =>{
-  // setData(data.filter((item)=>item.id !== id))
   try {
     await axios.delete(`/${path}/${id}`);
     setList(list.filter((item) => item._id !== id))
