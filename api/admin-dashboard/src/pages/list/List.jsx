@@ -4,14 +4,14 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DataTable from '../../components/datatable/DataTable';
 
-function List() {
+function List({columns}) {
+  console.log(columns, 'datas');
   return (
     <div className="list">
       <Sidebar/>
       <div className="listContainer">
         <Navbar/>
-        <DataTable/>
-        data table
+        <DataTable columns={columns}/>
       </div>
     </div>
   )

@@ -13,11 +13,13 @@ import { hotelColumns, userColumns } from "./datatablesorce";
 
 function App() {
 
+  console.log(hotelColumns, 'dasstas', userColumns);
+
   const {darkMode} = useContext(DarkModeContext)
 
   const ProtectedRoute = ({children}) =>{
     const {user} = useContext(AuthContext)
-console.log(user, 'user is came yes here')
+console.log(user, 'user is came  done here')
     if(!user){
       return <Navigate to="/login"></Navigate>
     }
