@@ -18,7 +18,7 @@ function DataTable({columns}) {
     setList(data)
   }, [data, path])
 
- console.log(data, 'datasss');
+ console.log(data, 'datasss added');
  const handleDelete = async(id) =>{
   try {
     await axios.delete(`/${path}/${id}`);
