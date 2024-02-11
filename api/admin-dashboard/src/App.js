@@ -19,7 +19,7 @@ function App() {
 
   const ProtectedRoute = ({children}) =>{
     const {user} = useContext(AuthContext)
-console.log(user, 'user is came  done here')
+console.log(user, 'user done here')
     if(!user){
       return <Navigate to="/login"></Navigate>
     }
