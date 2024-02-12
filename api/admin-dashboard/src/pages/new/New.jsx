@@ -4,6 +4,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import ProfileImage from "../../images/pro-removebg-preview (1).png";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import axios from "axios";
 
 function New({ inputs, title }) {
   const [file, setFile] = useState("")
@@ -11,10 +12,29 @@ function New({ inputs, title }) {
 
   const [info , setInfo] = useState({})
 
-  const handleChange = () =>{
-    
+  const handleChange = (e) =>{
+    setInfo(prev => ({...prev, [e.target.id]: e.target.value}))
   }
-  
+  console.log(info, 'data is came here')
+ 
+  const handleClick = async (e) => {
+    e.preventDefault()
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "upload");
+    try {
+      const uploadRes = await axios.post(
+        "https://api.cloudinary.com/v1_1/du5bvvdpv/image/upload", data
+      )
+
+      console.log(uploadRes.data, 'uploadREss')
+
+      const {url} = uploadRes.data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="new">
       <Sidebar />
@@ -45,7 +65,7 @@ function New({ inputs, title }) {
                 </div>
               ))}
 
-              <button>Send</button>
+              <button onClick={handleClick}>Send</button>
             </form>
           </div>
         </div>
