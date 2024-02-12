@@ -1,19 +1,13 @@
 import React, { useState } from "react";
-import "./new.scss";
+import "./newHotel.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import ProfileImage from "../../images/pro-removebg-preview (1).png";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 
-function New({ inputs, title }) {
+function NewHotel({ inputs, title }) {
   const [file, setFile] = useState("")
   console.log(file)
-
-  const [info , setInfo] = useState({})
-
-  const handleChange = () =>{
-    
-  }
   
   return (
     <div className="new">
@@ -41,7 +35,7 @@ function New({ inputs, title }) {
               (
                 <div className="formInput" key={input.id}>
                   <label htmlFor="">{input.label}</label>
-                  <input onChange={handleChange} type={input.type} placeholder={input.placeholder} />
+                  <input type={input.type} placeholder={input.placeholder} />
                 </div>
               ))}
 
@@ -55,4 +49,4 @@ function New({ inputs, title }) {
   );
 }
 
-export default New;
+export default NewHotel;

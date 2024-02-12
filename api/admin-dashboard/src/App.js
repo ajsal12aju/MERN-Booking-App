@@ -4,7 +4,7 @@ import List from "./pages/list/List"
 import Single from "./pages/single/Single"
 import New from "./pages/new/New"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { productInputs, userInput } from "./formsorce";
+import { productInputs, userInputs } from "./formsorce";
 import "./style/dark.scss"
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -39,7 +39,7 @@ console.log(user, 'user done here')
           <Route path="users">
             <Route index element={ <ProtectedRoute> <List columns={userColumns}/></ProtectedRoute>}/>
             <Route path=":userId" element={ <ProtectedRoute>   <Single/></ProtectedRoute>}></Route>
-            <Route path="new" element={<ProtectedRoute> <New inputs={userInput} title="Add New User" /> </ProtectedRoute>}></Route>
+            <Route path="new" element={<ProtectedRoute> <New inputs={userInputs} title="Add New User" /> </ProtectedRoute>}></Route>
           </Route>
           <Route path="hotels">
             <Route index element={  <ProtectedRoute>  <List columns={hotelColumns}/> </ProtectedRoute>}/>
