@@ -30,6 +30,12 @@ function New({ inputs, title }) {
       console.log(uploadRes.data, 'uploadREss')
 
       const {url} = uploadRes.data
+      const newUser = {
+        ...info,
+        img: url
+      }
+
+      await axios.post("/auth/register", newUser)
     } catch (error) {
       console.log(error)
     }
@@ -61,7 +67,7 @@ function New({ inputs, title }) {
               (
                 <div className="formInput" key={input.id}>
                   <label htmlFor="">{input.label}</label>
-                  <input onChange={handleChange} type={input.type} placeholder={input.placeholder} />
+                  <input onChange={handleChange} type={input.type} placeholder={input.placeholder} id={input.id} />
                 </div>
               ))}
 

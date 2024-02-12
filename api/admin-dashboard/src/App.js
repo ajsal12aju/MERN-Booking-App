@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 import { hotelColumns, userColumns } from "./datatablesorce";
+import NewHotel from "./pages/newHotel/NewHotel";
 
 function App() {
 
@@ -44,7 +45,7 @@ console.log(user, 'user done here')
           <Route path="hotels">
             <Route index element={  <ProtectedRoute>  <List columns={hotelColumns}/> </ProtectedRoute>}/>
             <Route path=":productId" element={  <ProtectedRoute> <Single/> </ProtectedRoute>}></Route>
-            <Route path="new" element={  <ProtectedRoute> <New inputs={productInputs} title="Add New Products"/> </ProtectedRoute>}></Route>
+            <Route path="new" element={  <ProtectedRoute> <NewHotel /> </ProtectedRoute>}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

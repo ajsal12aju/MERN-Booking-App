@@ -4,10 +4,24 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import ProfileImage from "../../images/pro-removebg-preview (1).png";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import { hotelInputs } from "../../formsorce";
+import useFetch from "../../hooks/useFetch";
 
 function NewHotel({ inputs, title }) {
-  const [file, setFile] = useState("")
-  console.log(file)
+  const [files, setFiles] = useState("")
+  const { data, loading, error, refetch } = useFetch('/rooms'); 
+
+  const [info , setInfo] = useState({})
+
+  const handleChange = (e) =>{
+    setInfo(prev => ({...prev, [e.target.id]: e.target.value}))
+  }
+  const handleSelect = (e) =>{
+
+  }
+  
+  console.log(info, 'data is came here')
+  console.log(files)
   
   return (
     <div className="new">
@@ -15,11 +29,11 @@ function NewHotel({ inputs, title }) {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>{title}</h1>
+          <h1>Add New Hotel</h1>
         </div>
         <div className="bottom">
           <div className="left">
-            <img src={ file ? URL.createObjectURL(file) : ProfileImage} alt="" />
+            <img src={ files ? URL.createObjectURL(files[0]) : ProfileImage} alt="" />
           </div>
           <div className="right">
             <form action="">
@@ -28,17 +42,29 @@ function NewHotel({ inputs, title }) {
                   {" "}
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
                 </label>
-                <input type="file" id="file" onChange={(e) => setFile(e.target.files[0])} style={{ display: "none" }} />
+                <input multiple type="file" id="file" onChange={(e) => setFiles(e.target.files)} style={{ display: "none" }} />
               </div> 
 
-              {inputs.map((input) => 
+              {hotelInputs.map((input) => 
               (
                 <div className="formInput" key={input.id}>
                   <label htmlFor="">{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} />
+                  <input onChange={handleChange} id={input.id} type={input.type} placeholder={input.placeholder} />
                 </div>
               ))}
-
+              <div className="formInput">
+                 <label>Featured</label>
+                 <select name="" id="featured" onChange={handleChange}>
+                  <option value={false}>No</option>
+                  <option value={true}>Yes</option>
+                 </select>
+              </div>
+              <div className="selectRooms">
+                 <label>Rooms</label>
+                 <select name="" id="rooms" onChange={handleSelect}>
+                    
+                 </select>
+              </div>
               <button>Send</button>
             </form>
           </div>
