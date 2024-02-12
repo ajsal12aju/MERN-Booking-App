@@ -61,7 +61,8 @@ console.log(data, 'datsxxas')
               </div>
               <div className="selectRooms">
                  <label>Rooms</label>
-                 <select multiple name="" id="rooms" onChange={handleSelect}>
+                 <select multiple
+                  name="" id="rooms" onChange={handleSelect}>
                     {
                       loading ? "loading" : data && data.map(room => (
                         <option value={room._id}>
