@@ -10,7 +10,7 @@ import useFetch from "../../hooks/useFetch";
 function NewHotel({ inputs, title }) {
   const [files, setFiles] = useState("")
   const { data, loading, error, refetch } = useFetch('/rooms'); 
-
+console.log(data, 'datsxxas')
   const [info , setInfo] = useState({})
 
   const handleChange = (e) =>{
@@ -61,8 +61,14 @@ function NewHotel({ inputs, title }) {
               </div>
               <div className="selectRooms">
                  <label>Rooms</label>
-                 <select name="" id="rooms" onChange={handleSelect}>
-                    
+                 <select multiple name="" id="rooms" onChange={handleSelect}>
+                    {
+                      loading ? "loading" : data && data.map(room => (
+                        <option value={room._id}>
+                          {room.title}
+                        </option>
+                      ))
+                    }
                  </select>
               </div>
               <button>Send</button>
