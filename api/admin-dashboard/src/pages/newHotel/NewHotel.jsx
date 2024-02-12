@@ -10,7 +10,7 @@ import useFetch from "../../hooks/useFetch";
 function NewHotel({ inputs, title }) {
   const [files, setFiles] = useState("")
   const { data, loading, error, refetch } = useFetch('/rooms'); 
-console.log(data, 'datsxxas')
+console.log(data, 'datssxxas')
   const [info , setInfo] = useState({})
 
   const handleChange = (e) =>{
