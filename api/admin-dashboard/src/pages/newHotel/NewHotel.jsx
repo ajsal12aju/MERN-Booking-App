@@ -6,23 +6,46 @@ import ProfileImage from "../../images/pro-removebg-preview (1).png";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { hotelInputs } from "../../formsorce";
 import useFetch from "../../hooks/useFetch";
+import axios from "axios";
 
 function NewHotel({ inputs, title }) {
-  const [files, setFiles] = useState("")
-  const { data, loading, error, refetch } = useFetch('/rooms'); 
-console.log(data, 'datssxxas')
-  const [info , setInfo] = useState({})
+  const [files, setFiles] = useState("");
+  const { data, loading, error, refetch } = useFetch("/rooms");
+  console.log(data, "datssxxas");
+  const [info, setInfo] = useState({});
+  const [rooms, setRooms] = useState([])
 
-  const handleChange = (e) =>{
-    setInfo(prev => ({...prev, [e.target.id]: e.target.value}))
-  }
-  const handleSelect = (e) =>{
+  const handleChange = (e) => {
+    setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+  const handleSelect = (e) => {
+    const value = Array.from(e.target.selectedOptions, (option) => option.value )
+    setRooms(value)
+  };
 
+  const handleClick = async (e) => {
+    e.preventDefault();
+
+    try {
+      const list = await Promise.all(
+        files.map(async(file) => {
+          const data = new FormData();
+          data.append("file", file);
+          data.append("upload_preset", "upload");
+          
+          const uploadRes = await axios.post(
+            "https://api.cloudinary.com/v1_1/du5bvvdpv/image/upload", data
+          )
+          const {url} = uploadRes.data
+          return url
+        })
+      )
+    } catch (error) {
+      console.log(error);
+    }
   }
-  
-  console.log(info, 'data is came here')
-  console.log(files)
-  
+  console.log(rooms, "data is came here");
+  console.log(files);
   return (
     <div className="new">
       <Sidebar />
@@ -33,7 +56,10 @@ console.log(data, 'datssxxas')
         </div>
         <div className="bottom">
           <div className="left">
-            <img src={ files ? URL.createObjectURL(files[0]) : ProfileImage} alt="" />
+            <img
+              src={files ? URL.createObjectURL(files[0]) : ProfileImage}
+              alt=""
+            />
           </div>
           <div className="right">
             <form action="">
@@ -42,35 +68,51 @@ console.log(data, 'datssxxas')
                   {" "}
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
                 </label>
-                <input multiple type="file" id="file" onChange={(e) => setFiles(e.target.files)} style={{ display: "none" }} />
-              </div> 
+                <input
+                  multiple
+                  type="file"
+                  id="file"
+                  onChange={(e) => setFiles(e.target.files)}
+                  style={{ display: "none" }}
+                />
+              </div>
 
-              {hotelInputs.map((input) => 
-              (
+              {hotelInputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label htmlFor="">{input.label}</label>
-                  <input onChange={handleChange} id={input.id} type={input.type} placeholder={input.placeholder} />
+                  <input
+                    onChange={handleChange}
+                    id={input.id}
+                    type={input.type}
+                    placeholder={input.placeholder}
+                  />
                 </div>
               ))}
               <div className="formInput">
-                 <label>Featured</label>
-                 <select name="" id="featured" onChange={handleChange}>
+                <label>Featured</label>
+                <select name="" id="featured" onChange={handleChange}>
                   <option value={false}>No</option>
                   <option value={true}>Yes</option>
-                 </select>
+                </select>
               </div>
               <div className="selectRooms">
-                 <label>Rooms</label>
-                 <select multiple
-                  name="" id="rooms" onChange={handleSelect}>
-                    {
-                      loading ? "loading" : data && data.map(room => (
-                        <option value={room._id}>
-                          {room.title}
-                        </option>
-                      ))
-                    }
-                 </select>
+                <label>Rooms</label>
+                <select
+                  multiple={true}
+                  name="rooms"
+                  id="rooms"
+                  onChange={handleSelect}
+                >
+                  {loading ? (
+                    <option>Loading...</option>
+                  ) : (
+                    data.map((room) => (
+                      <option key={room._id} value={room._id}>
+                        {room.title}
+                      </option>
+                    ))
+                  )}
+                </select>
               </div>
               <button>Send</button>
             </form>

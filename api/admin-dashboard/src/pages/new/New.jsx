@@ -26,7 +26,7 @@ function New({ inputs, title }) {
       const uploadRes = await axios.post(
         "https://api.cloudinary.com/v1_1/du5bvvdpv/image/upload", data
       )
-
+        
       console.log(uploadRes.data, 'uploadREss')
 
       const {url} = uploadRes.data
