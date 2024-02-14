@@ -28,7 +28,7 @@ function NewHotel({ inputs, title }) {
 
     try {
       const list = await Promise.all(
-        files.map(async(file) => {
+       Object.values(files).map(async(file) => {
           const data = new FormData();
           data.append("file", file);
           data.append("upload_preset", "upload");
@@ -40,6 +40,12 @@ function NewHotel({ inputs, title }) {
           return url
         })
       )
+      const newhotel = {
+        ...info,
+        rooms,
+        photos: list,
+      }
+      await axios.post("/hotels", newhotel)
     } catch (error) {
       console.log(error);
     }
@@ -114,7 +120,7 @@ function NewHotel({ inputs, title }) {
                   )}
                 </select>
               </div>
-              <button>Send</button>
+              <button onClick={handleClick}>Send</button>
             </form>
           </div>
         </div>
