@@ -9,10 +9,11 @@ import useFetch from "../../hooks/useFetch";
 function NewRoom() {
   const [info, setInfo] = useState({})
   const [hotelId, setHotelId] = useState(undefined);
+  const [rooms, setRooms] = useState([]);
+
 
   const {data, loading, error} = useFetch("/hotels");
   
-  console.log(file)
   
   return (
     <div className="new">
@@ -32,8 +33,17 @@ function NewRoom() {
                   <input id={input.type} type={input.type} placeholder={input.placeholder} />
                 </div>
               ))}
+              <div className="formInput">
+                <label> Rooms </label>
+                <textarea placeholder="give comma between room" name="" id="" cols="30" rows="10"></textarea>
+              </div>
                 <div className="formInput">
                   <label htmlFor="">Choose a Hotel</label>
+                  <select name="" id="hotelId" onChange={e=>setHotelId(e.target.value)}>
+                    {loading ? "Loading" : data && data.map(hotel =>(
+                    <option value={hotel._id}>{hotel.name}</option>
+                    ))}                    
+                  </select>
                 </div>
               <button>Send</button>
             </form>
