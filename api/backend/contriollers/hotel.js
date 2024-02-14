@@ -55,7 +55,6 @@ export const getHotels = async (req, res, next) => {
         if (featured) {
             query.featured = featured === 'true'; 
         }
-
         if (city) {
             query.city = city;
         }
