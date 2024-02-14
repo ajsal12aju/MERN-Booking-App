@@ -62,7 +62,7 @@ function DataTable({columns}) {
             paginationModel: { page: 0, pageSize: 9 },
           },
         }}       
-        pageSizeOptions={[5, 10]}
+        pageSizeOptions={[10, 20]}
         checkboxSelection
         getRowId={row => row._id}
       />

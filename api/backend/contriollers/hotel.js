@@ -49,9 +49,12 @@ export const getHotel = async (req, res, next)=>{
 //    };
 export const getHotels = async (req, res, next) => {
     try {
-        const { limit, featured, city, min, max } = req.query;
-        
-        let query = { featured: featured };
+        const { limit = 10, featured, city, min, max } = req.query;
+        let query = {};
+
+        if (featured) {
+            query.featured = featured === 'true'; 
+        }
 
         if (city) {
             query.city = city;
@@ -60,15 +63,14 @@ export const getHotels = async (req, res, next) => {
         if (min || max) {
             query.cheapestPrice = {};
             if (min) {
-                query.cheapestPrice.$gt = parseInt(min, 10) || 0;
+                query.cheapestPrice.$gte = parseInt(min, 10) || 0; 
             }
             if (max) {
-                query.cheapestPrice.$lt = parseInt(max, 10) || 999;
+                query.cheapestPrice.$lte = parseInt(max, 10) || 999; 
             }
         }
-   console.log(query, 'daatasssssss')
-        const hotels = await Hotel.find(query).limit(10)
-        // .limit(parseInt(limit, 10));
+
+        const hotels = await Hotel.find(query).limit(parseInt(limit, 10));
         res.status(200).json(hotels);
     } catch (error) {
         next(error);
