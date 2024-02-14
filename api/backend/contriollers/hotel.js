@@ -50,6 +50,7 @@ export const getHotel = async (req, res, next)=>{
 export const getHotels = async (req, res, next) => {
     try {
         const { limit, featured, city, min, max } = req.query;
+        
         let query = { featured: featured };
 
         if (city) {
